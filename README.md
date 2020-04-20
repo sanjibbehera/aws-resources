@@ -17,6 +17,6 @@ Usage
     terraform init
     terraform validate
     terraform plan -out=tf.plan
-    terraform apply -auto-approve tf.plan [You can setup terraform.tfvars according to your needs].
-    <Don't forget to destroy your resources using the below command.>
+    terraform apply -auto-approve tf.plan [You can setup terraform.tfvars in the root dir according to your needs].
+    <Don't forget to destroy your resources using the below command to avoid incurring bills from AWS.>
     terraform destroy -auto-approve
