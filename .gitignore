@@ -3,6 +3,6 @@
 terraform.tfstate
 terraform.tfvars
 *.tfstate*
-tf.plan
+*.plan
 *.ppk
 *.pub

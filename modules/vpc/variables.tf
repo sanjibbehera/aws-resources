@@ -1,13 +1,14 @@
-#----modules/vpc/variables.tf----
 variable "vpc_cidr" {}
 variable "tenancy" {}
 
-variable "accessip" {}
+variable "vpc_id" {}
+variable "public_subnet_count" {}
+variable "private_subnet_count" {}
 
-variable "public_cidrs" {
-  type = list(string)
+variable "public_subnet_cidr" {
+    type = list(string)
 }
 
-variable "private_cidrs" {
-  type = list(string)
+variable "private_subnet_cidr" {
+    type = list(string)
 }

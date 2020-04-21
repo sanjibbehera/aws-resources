@@ -1,20 +1,24 @@
+# global
 variable "aws_region" {}
 
-# Networking Variables...
+# networking
 variable "vpc_cidr" {}
-
-variable "public_cidrs" {
-  type = list(string)
-}
-
-variable "private_cidrs" {
-  type = list(string)
-}
 variable "tenancy" {}
+variable "public_subnet_count" {}
+variable "private_subnet_count" {}
 
-variable "accessip" {}
+variable "vpc_id" {}
 
-# EC2 Variables...
-variable "key_name" {}
+variable "public_subnet_cidr" {
+    type = list(string)
+}
+
+variable "private_subnet_cidr" {
+    type = list(string)
+}
+
+# ec2
 variable "instance_count" {}
 variable "instance_type" {}
+variable "key_name" {}
+variable "accessip" {}
