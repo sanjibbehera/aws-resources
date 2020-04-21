@@ -32,3 +32,19 @@ module "ec2_resources" {
   vpc_id                 = module.networking.vpc_id
   accessip               = var.accessip
 }
+
+# Create ELB...
+module "elb_resources" {
+  source                 = "./modules/elb"
+  vpc_id                 = module.networking.vpc_id
+  subnets                = module.networking.public_subnets
+  attachment_count       = var.attachment_count
+  target_id              = module.ec2_resources.instance_ids
+  elb_instance_http_port = var.elb_instance_http_port
+  elb_lb_port            = var.elb_lb_port
+  healthy_threshold      = var.healthy_threshold
+  unhealthy_threshold    = var.unhealthy_threshold
+  health_check_interval  = var.health_check_interval
+  health_port            = var.health_port
+  protocol               = var.protocol
+}

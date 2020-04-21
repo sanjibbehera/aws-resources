@@ -73,6 +73,6 @@ resource "aws_security_group" "sanjib_public_sg" {
 
 resource "aws_network_interface_sg_attachment" "sg_attachment" {
     count                  = var.instance_count
-    security_group_id    = aws_security_group.sanjib_public_sg.id
-    network_interface_id = aws_instance.web_server[count.index].primary_network_interface_id
+    security_group_id      = aws_security_group.sanjib_public_sg.id
+    network_interface_id   = aws_instance.web_server[count.index].primary_network_interface_id
 }

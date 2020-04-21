@@ -6,3 +6,4 @@ terraform.tfvars
 *.plan
 *.ppk
 *.pub
+*old
