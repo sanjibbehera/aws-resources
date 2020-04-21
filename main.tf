@@ -47,4 +47,5 @@ module "elb_resources" {
   health_check_interval  = var.health_check_interval
   health_port            = var.health_port
   protocol               = var.protocol
+  security_group_id      = module.ec2_resources.public_security_group_id
 }

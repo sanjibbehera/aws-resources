@@ -72,3 +72,16 @@ resource "aws_lb_target_group_attachment" "sanjib_elb_grp_attach" {
     target_id        = var.target_id[count.index]
     port             = var.elb_instance_http_port
 }
+
+resource "aws_security_group_rule" "public_sg" {
+  type                        = "ingress"
+  from_port                   = 80
+  to_port                     = 80
+  protocol                    = "tcp"
+  source_security_group_id    = aws_security_group.sanjib_elb_sg.id
+  security_group_id           = var.security_group_id
+
+  depends_on = [
+      aws_security_group.sanjib_elb_sg
+  ]
+}

@@ -47,22 +47,7 @@ resource "aws_security_group" "sanjib_public_sg" {
     protocol    = "tcp"
     cidr_blocks = ["${var.accessip}"]
   }
-
-  #HTTP
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["${var.accessip}"]
-  }
-
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["${var.accessip}"]
-  }
-
+  
   egress {
     from_port   = 0
     to_port     = 0

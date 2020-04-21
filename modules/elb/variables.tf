@@ -13,3 +13,5 @@ variable "target_id" {}
 variable "vpc_id" {}
 
 variable "attachment_count" {}
+
+variable "security_group_id" {}
