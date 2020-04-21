@@ -6,7 +6,7 @@ Create AWS Resource via Terraform.
     
     First Task:-   Create baseline infrastructure i.e. VPC resources. [DONE]
     Second Task:-  Create EC2 resources, ssh key and userdata to install APACHE base software. [DONE]
-    Third Task:-   Create ELB and attach ELB IP to the security group of EC2 instances.
+    Third Task:-   Create ELB and attach ELB IP to the security group of EC2 instances. [DONE]
     Fourth Task:-  Create MYSQL RDS DB Instance and host them in Private Subnet of the VPC.
     Fifth Task:-   Create IAM resources for SSM.
     Sixth Task:-   Create S3 Bucket to store the remote state.
