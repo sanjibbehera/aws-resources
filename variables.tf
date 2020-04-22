@@ -19,6 +19,7 @@ variable "private_subnet_cidr" {
 
 # ec2
 variable "instance_count" {}
+variable "bastion_instance_count" {}
 variable "instance_type" {}
 variable "key_name" {}
 variable "accessip" {}

@@ -10,7 +10,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-# Create VPC for Aapche webapp.
+# Module to create VPC resources.
 module "networking" {
   source                 = "./modules/vpc"
   vpc_cidr               = var.vpc_cidr
@@ -22,18 +22,27 @@ module "networking" {
   private_subnet_cidr    = var.private_subnet_cidr
 }
 
-# Create EC2 Instance...
+# Module to create EC2 Instance(s), 1 Bastion Instance in Public Subnet, 
+# 2 Apache Web Applications in Private Subnets...
 module "ec2_resources" {
   source                 = "./modules/ec2"
   key_name               = var.key_name
   instance_count         = var.instance_count
+  bastion_instance_count = var.bastion_instance_count
   instance_type          = var.instance_type
-  subnet_id              = module.networking.public_subnet_id
+  public_subnet_id       = module.networking.public_subnet_id
+  private_subnet_id      = module.networking.private_subnet_id
   vpc_id                 = module.networking.vpc_id
   accessip               = var.accessip
+  iam_instance_profile   = module.iam_roles.ec2_instance_profile
 }
 
-# Create ELB...
+# Module to create IAM Roles, i.e., SSM Role that can be attached to EC2 as Instance Role...
+module "iam_roles" {
+  source                 = "./modules/iam"  
+}
+
+# Create ELB which points to the 2 Apache Web Servers as Target groups...
 module "elb_resources" {
   source                 = "./modules/elb"
   vpc_id                 = module.networking.vpc_id
@@ -47,5 +56,6 @@ module "elb_resources" {
   health_check_interval  = var.health_check_interval
   health_port            = var.health_port
   protocol               = var.protocol
-  security_group_id      = module.ec2_resources.public_security_group_id
+  #security_group_id      = module.ec2_resources.public_security_group_id
+  security_group_id      = module.ec2_resources.private_security_group_id
 }
