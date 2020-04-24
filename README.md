@@ -10,7 +10,7 @@ Create AWS Resource via Terraform.
     Task No. 3  :-  Create ELB and attach ELB IP to the security group of EC2 Apache instances. [DONE]
     Task No. 4  :-  Create S3 Bucket to store the remote state.                                 [DONE]
     Task No. 5  :-  Create IAM resources for SSM.                                               [DONE]
-    Task No. 6  :-  Create MYSQL RDS DB Instance and host them in Private Subnet of the VPC.
+    Task No. 6  :-  Create MYSQL RDS DB Instance and host them in Private Subnet of the VPC.    [DONE]
     Task No. 7  :-  Create ECS Cluster and Install Docker Images.
     Task No. 8  :-  More task coming up.
     
