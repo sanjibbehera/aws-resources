@@ -12,6 +12,9 @@ output "private_subnet_id" {
 output "public_subnets" {
   value = "${tolist(aws_subnet.sanjib_public_subnet.*.id)}"
 }
+output "private_subnets" {
+  value = "${tolist(aws_subnet.sanjib_private_subnet.*.id)}"
+}
 
 output "availability_zones" {
   value = "${join(", ", aws_subnet.sanjib_public_subnet.*.availability_zone_id)}"

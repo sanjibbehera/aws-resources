@@ -17,6 +17,9 @@ variable "private_subnet_cidr" {
     type = list(string)
 }
 
+# rds
+variable "RDS_PASSWORD" {}
+
 # ec2
 variable "instance_count" {}
 variable "bastion_instance_count" {}

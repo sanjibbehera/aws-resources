@@ -1,5 +1,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # DEV_ROOT/MAIN.TF FILE
+# Author : SANJIB BEHERA
+# Version: SB_0.1
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 terraform {
@@ -35,11 +37,12 @@ module "ec2_resources" {
   vpc_id                 = module.networking.vpc_id
   accessip               = var.accessip
   iam_instance_profile   = module.iam_roles.ec2_instance_profile
+  #depends_on             = [module.mysql_instance.sanjib_mysqldb]
 }
 
 # Module to create IAM Roles, i.e., SSM Role that can be attached to EC2 as Instance Role...
 module "iam_roles" {
-  source                 = "./modules/iam"  
+  source                 = "./modules/iam"
 }
 
 # Create ELB which points to the 2 Apache Web Servers as Target groups...
@@ -58,4 +61,13 @@ module "elb_resources" {
   protocol               = var.protocol
   #security_group_id      = module.ec2_resources.public_security_group_id
   security_group_id      = module.ec2_resources.private_security_group_id
+}
+
+# Module to create MySQL V5.7 in Private Subnet.
+module "mysql_instance" {
+  source                    = "./modules/rds"
+  RDS_PASSWORD              = var.RDS_PASSWORD
+  vpc_id                    = module.networking.vpc_id
+  subnet_ids                = module.networking.private_subnets
+  privateEC2InstanceSG      = module.ec2_resources.private_security_group_id
 }

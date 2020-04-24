@@ -1,4 +1,8 @@
 #!/bin/bash
+#############################
+# Author : SANJIB BEHERA
+# Version: SB_0.1
+#############################
 yum install telnet -y
 yum install curl -y
 yum install wget -y
