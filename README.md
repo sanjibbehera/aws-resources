@@ -23,3 +23,7 @@ Usage
     terraform apply -auto-approve tf.plan [You can setup terraform.tfvars in the root dir according to your needs].
     <Don't forget to destroy your resources using the below command to avoid incurring bills from AWS.>
     terraform destroy -auto-approve
+    **Please Note that you would require AWS Access KEYS & AWS SECRET ACCESS KEYS are required to 
+    ** access AWS resources & also create AWS resources. 
+    ** Hence create a AWS admin user for the above tasks and configure these keys or pass them 
+    ** as environment variables with the command <terraform apply> if you do not wish to store them.
