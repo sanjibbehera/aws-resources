@@ -31,13 +31,13 @@ module "ec2_resources" {
   key_name               = var.key_name
   instance_count         = var.instance_count
   bastion_instance_count = var.bastion_instance_count
+  baseami_instance_count = var.baseami_instance_count
   instance_type          = var.instance_type
   public_subnet_id       = module.networking.public_subnet_id
   private_subnet_id      = module.networking.private_subnet_id
   vpc_id                 = module.networking.vpc_id
   accessip               = var.accessip
   iam_instance_profile   = module.iam_roles.ec2_instance_profile
-  #depends_on             = [module.mysql_instance.sanjib_mysqldb]
 }
 
 # Module to create IAM Roles, i.e., SSM Role that can be attached to EC2 as Instance Role...
@@ -59,7 +59,6 @@ module "elb_resources" {
   health_check_interval  = var.health_check_interval
   health_port            = var.health_port
   protocol               = var.protocol
-  #security_group_id      = module.ec2_resources.public_security_group_id
   security_group_id      = module.ec2_resources.private_security_group_id
 }
 
@@ -70,4 +69,10 @@ module "mysql_instance" {
   vpc_id                    = module.networking.vpc_id
   subnet_ids                = module.networking.private_subnets
   privateEC2InstanceSG      = module.ec2_resources.private_security_group_id
+}
+
+# Module to create a new EC2 Instance on public Subnet & public SG and then create AMI from this EC2 Instance.
+module "createAMI" {
+  source                    = "./modules/compute"
+  source_instance_id        = module.ec2_resources.base_ec2_instance
 }

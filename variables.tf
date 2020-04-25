@@ -23,6 +23,7 @@ variable "RDS_PASSWORD" {}
 # ec2
 variable "instance_count" {}
 variable "bastion_instance_count" {}
+variable "baseami_instance_count" {}
 variable "instance_type" {}
 variable "key_name" {}
 variable "accessip" {}

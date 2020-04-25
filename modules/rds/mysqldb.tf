@@ -28,6 +28,7 @@ resource "aws_security_group" "rds_sg" {
   }
 }
 
+# Create DB Subnet Group..
 resource "aws_db_subnet_group" "sanjib_rds_grp" {
   name       = "sanjib-rds-grp"
   subnet_ids = var.subnet_ids
@@ -40,20 +41,20 @@ resource "aws_db_subnet_group" "sanjib_rds_grp" {
 
 # Creating the RDS Instance.
 resource "aws_db_instance" "sanjib_mysqldb" {
-  identifier             = "sanjib-rds-mysqldb"
-  allocated_storage      = 10
-  storage_type           = "gp2"
-  engine                 = "mysql"
-  engine_version         = "5.7"
-  instance_class         = "db.t2.micro"
-  name                   = "sanjibdb"
-  username               = "root"
-  password               = var.RDS_PASSWORD
-  parameter_group_name   = "default.mysql5.7"
-  vpc_security_group_ids = [aws_security_group.rds_sg.id]  
-  #subnet_ids             = data.aws_subnet_ids.rds_subnets.ids
-  db_subnet_group_name   = aws_db_subnet_group.sanjib_rds_grp.id
-  multi_az               = "false" # set to true to have high availability: 2 instances synchronized with each other
+  identifier                   = "sanjib-rds-mysqldb"
+  allocated_storage            = 10
+  storage_type                 = "gp2"
+  engine                       = "mysql"
+  engine_version               = "5.7"
+  instance_class               = "db.t2.micro"
+  name                         = "sanjibdb"
+  username                     = "root"
+  password                     = var.RDS_PASSWORD
+  parameter_group_name         = "default.mysql5.7"
+  vpc_security_group_ids       = [aws_security_group.rds_sg.id]
+  db_subnet_group_name         = aws_db_subnet_group.sanjib_rds_grp.id
+  skip_final_snapshot          = true
+  multi_az                     = "false" # set to true to have high availability: 2 instances synchronized with each other
 
   tags = {
     Name = "SANJIB MYSQL DB"
