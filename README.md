@@ -8,7 +8,7 @@ Create AWS Resource via Terraform.
     Task No. 2a :-  Create EC2 resources, ssh key and userdata to install APACHE base software.     [DONE]
     Task No. 2b :-  Create EC2 Bastion resource and move apache instances to private subnets.       [DONE]
     Task No. 2c :-  Create EC2 resource & install software & then create AMI from that EC2.         [DONE]
-    Task No. 2d :-  Create EC2 ASG resource for the APACHE EC2 Instance.                            [WIP]
+    Task No. 2d :-  Create EC2 ASG resource for the APACHE EC2 Instance in the Private Subnet.      [WIP]
     Task No. 2e :-  Create EC2 Instance in Private Subnet, attach VPC endpoint to connect DynamoDB. [WIP]
     Task No. 3  :-  Create ELB and attach ELB IP to the security group of EC2 Apache instances.     [DONE]
     Task No. 4  :-  Create S3 Bucket to store the remote state.                                     [DONE]
