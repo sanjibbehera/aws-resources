@@ -16,7 +16,7 @@ Create AWS Resource via Terraform.
     Task No. 6a :-  Create MYSQL RDS DB Instance and host them in Private Subnet of the VPC.        [DONE]
     Task No. 6b :-  Enable skip Snapshot creation upon deletion of the RDS DB Instance.             [DONE]
     Task No. 7  :-  Create ECS Cluster and Install Docker Images.                                   [WIP]
-    Task No. 8  :-  Create DynamoDB Table such that EC2 instance in private subnet connects to it.  [WIP]
+    Task No. 8  :-  Create DynamoDB Table such that EC2 instance in private subnet connects to it.  [DONE]
     Task No. 9  :-  More task coming up.
     
 Usage
