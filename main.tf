@@ -12,6 +12,16 @@ provider "aws" {
   region = var.aws_region
 }
 
+# Module to create a new Dynamodb Table..
+module "createDynamoDBTable" {
+  source                    = "./modules/dynamodb"
+  table_name                = var.table_name
+  billing_mode              = var.billing_mode
+  rcu                       = var.rcu
+  wcu                       = var.wcu
+  hash_key                  = var.hash_key
+}
+
 # Module to create VPC resources.
 module "networking" {
   source                 = "./modules/vpc"

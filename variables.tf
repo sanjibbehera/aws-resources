@@ -38,3 +38,10 @@ variable "health_check_interval" {}
 variable "health_port" {}
 variable "protocol" {}
 variable "attachment_count" {}
+
+# DYNAMODB..
+variable "table_name" {}
+variable "billing_mode" {}
+variable "rcu" {}
+variable "wcu" {}
+variable "hash_key" {}
